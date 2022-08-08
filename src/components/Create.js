@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { SaveStorage } from "../helpers/SaveStorage";
 
-export const Create = () => {
+export const Create = ({setMovies}) => {
   
   const title = "Add movie";
   const [movieState, setMovieState] = useState({});
@@ -18,7 +19,18 @@ export const Create = () => {
     };
 
     setMovieState(movie);
+    // update main state
+    setMovies(items => {
+      return [...items, movie];
+    })
+
+    SaveStorage('movies', movie)
+
+
+    
   };
+
+  
 
 
   return (

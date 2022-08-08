@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Create } from "./components/Create";
 import { List } from "./components/List";
 import { Searcher } from "./components/Searcher";
 
 function App() {
+
+  const [movies, setMovies] = useState([]);
+
   return (
     <div className="layout">
     <header className="header">
@@ -21,12 +25,12 @@ function App() {
     </nav>
     <section className="content">
       {/* Peliculas */}
-      <List />
+      <List movies={movies} setMovies={setMovies}/>
     </section>
     <aside className="lateral">
       {/* Buscador */}
       <Searcher />
-      <Create />
+      <Create setMovies={setMovies} />
     </aside>
     <footer className="footer">
       Practice app.
