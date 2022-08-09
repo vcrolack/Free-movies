@@ -3,6 +3,7 @@ import React, {useState} from "react";
 export const Searcher = ({movies, setMovies}) => {
 
   const [search, setSearch] = useState('');
+  const [notFound, setNotFound] = useState(false);
 
   const searchMovie = e => {
     setSearch(e.target.value);
@@ -13,7 +14,10 @@ export const Searcher = ({movies, setMovies}) => {
 
     if (search.length <= 1 || moviesFound <= 0) {
       moviesFound = JSON.parse(localStorage.getItem('movies'));
-    } 
+      setNotFound(true);
+    } else {
+      setNotFound(false);
+    }
 
     setMovies(moviesFound);
 
@@ -24,6 +28,7 @@ export const Searcher = ({movies, setMovies}) => {
       <h3 className="title" id="search-field">
         Searcher
       </h3>
+      {(notFound === true && search.length > 1) && <span className="not-found">We couldn't any movies here. Sorry!</span>}
       <h4>{search}</h4>
       <form>
         <input
