@@ -29,7 +29,7 @@ function App() {
     </section>
     <aside className="lateral">
       {/* Buscador */}
-      <Searcher />
+      <Searcher movies={movies} setMovies={setMovies}/>
       <Create setMovies={setMovies} />
     </aside>
     <footer className="footer">
